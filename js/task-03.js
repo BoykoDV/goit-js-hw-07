@@ -1,29 +1,31 @@
 /* 'use strict'; */
 
-/* Напиши скрипт имитирующий авторизацию администратора в панели управления.
+/* Напиши фукцнию findLongestWord(string), которая принимает параметром произвольную строку
+(в строке будут только слова и пробелы) и возвращает самое длинное слово в этой строке.
+const findLongestWord = function(string) {
+  // твой код
+};
+Вызовы функции для проверки работоспособности твоей реализации.
+console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
+console.log(findLongestWord("Google do a roll")); // 'Google'
+console.log(findLongestWord("May the force be with you")); // 'force' */
 
-Есть переменная message в которую будет записано сообщение о результате. 
-При загрузке страницы у посетителя запрашивается пароль через prompt:
+const findLongestWord = function(string) {
+  const wordsArray = string.split(" ");
+  let longestWord = wordsArray[0];
 
-Если нажали Cancel, записать в message строку 'Отменено пользователем!'
-В протовном случае, если введен пароль который совпадает со значением константы ADMIN_PASSWORD, записать в message строку 
-'Добро пожаловать!'
-В противном случае, то есть если ни одно из предыдущих условий не выполнилось, записать в message строку 
-'Доступ запрещен, неверный пароль!'
-После всех проверок вывести в alert значение переменной message. */
+  for (let i = 1; i < wordsArray.length; i += 1) {
+    let sizeLongestWord = longestWord.split("").length;
+    let sizeСurrentWord = wordsArray[i].split("").length;
+    if (sizeСurrentWord > sizeLongestWord) {
+      longestWord = wordsArray[i];
+    }
+  }
+  return longestWord;
+};
 
-const ADMIN_PASSWORD = "jqueryismyjam";
-let message = prompt("Please enter a password!");
-switch (message) {
-  case null:
-    message = "Отменено пользователем!";
-    break;
+console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
 
-  case ADMIN_PASSWORD:
-    message = "Добро пожаловать!";
-    break;
+console.log(findLongestWord("Google do a roll")); // 'Google'
 
-  default:
-    message = "Доступ запрещен, неверный пароль!";
-}
-alert(message);
+console.log(findLongestWord("May the force be with you")); // 'force'
