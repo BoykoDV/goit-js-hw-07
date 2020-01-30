@@ -1,31 +1,77 @@
-/* 'use strict'; */
+//  'use strict';
 
-/* Напиши фукцнию findLongestWord(string), которая принимает параметром произвольную строку
-(в строке будут только слова и пробелы) и возвращает самое длинное слово в этой строке.
-const findLongestWord = function(string) {
-  // твой код
-};
-Вызовы функции для проверки работоспособности твоей реализации.
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
-console.log(findLongestWord("Google do a roll")); // 'Google'
-console.log(findLongestWord("May the force be with you")); // 'force' */
+// Напиши функцию findBestEmployee(employees), которая принимает объект
+//  и возвращает имя самого продуктивного (который выполнил больше всех задач).
+//  Сотрудники и кол-во выполненых задач содержатся как свойства объекта в формате "имя":"кол-во задач".
+// const findBestEmployee = function(employees) {
+//   // твой код
+// };
+//  Вызовы функции для проверки работоспособности твоей реализации.
+//  console.log(
+//   findBestEmployee({
+//     ann: 29,
+//     david: 35,
+//     helen: 1,
+//     lorence: 99,
+//   }),
+// ); // lorence
 
-const findLongestWord = function(string) {
-  const wordsArray = string.split(" ");
-  let longestWord = wordsArray[0];
+// console.log(
+//   findBestEmployee({
+//     poly: 12,
+//     mango: 17,
+//     ajax: 4,
+//   }),
+// ); // mango
 
-  for (let i = 1; i < wordsArray.length; i += 1) {
-    let sizeLongestWord = longestWord.split("").length;
-    let sizeСurrentWord = wordsArray[i].split("").length;
-    if (sizeСurrentWord > sizeLongestWord) {
-      longestWord = wordsArray[i];
+// console.log(
+//   findBestEmployee({
+//     lux: 147,
+//     david: 21,
+//     kiwi: 19,
+//     chelsy: 38,
+//   }),
+// ); // lux
+
+const findBestEmployee = function(employees) {
+  // const valuesArray = Object.values(employees);
+  // const max = Math.max(...valuesArray);
+  // console.log(max);
+  const keysArray = Object.keys(employees);
+  let maxValue = employees[keysArray[0]];
+  let mostProductive = keysArray[0];
+
+  for (let i = 0; i < keysArray.length; i += 1) {
+    if (maxValue < employees[keysArray[i]]) {
+      maxValue = employees[keysArray[i]];
+      mostProductive = keysArray[i];
     }
   }
-  return longestWord;
+  return `${mostProductive} : ${maxValue}`;
 };
 
-console.log(findLongestWord("The quick brown fox jumped over the lazy dog")); // 'jumped'
+console.log(
+  findBestEmployee({
+    ann: 29,
+    david: 35,
+    helen: 1,
+    lorence: 99
+  })
+); // lorence
 
-console.log(findLongestWord("Google do a roll")); // 'Google'
+console.log(
+  findBestEmployee({
+    poly: 12,
+    mango: 17,
+    ajax: 4
+  })
+); // mango
 
-console.log(findLongestWord("May the force be with you")); // 'force'
+console.log(
+  findBestEmployee({
+    lux: 147,
+    david: 21,
+    kiwi: 19,
+    chelsy: 38
+  })
+); // lux
