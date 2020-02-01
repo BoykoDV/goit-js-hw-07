@@ -33,21 +33,35 @@
 //   }),
 // ); // lux
 
-const findBestEmployee = function(employees) {
-  // const valuesArray = Object.values(employees);
-  // const max = Math.max(...valuesArray);
-  // console.log(max);
-  const keysArray = Object.keys(employees);
-  let maxValue = employees[keysArray[0]];
-  let mostProductive = keysArray[0];
+/* first option */
+// const findBestEmployee = function(employees) {
+//   // const valuesArray = Object.values(employees);
+//   // const max = Math.max(...valuesArray);
+//   // console.log(max);
+//   const keysArray = Object.keys(employees);
+//   let maxValue = employees[keysArray[0]];
+//   let mostProductive = keysArray[0];
 
-  for (let i = 0; i < keysArray.length; i += 1) {
-    if (maxValue < employees[keysArray[i]]) {
-      maxValue = employees[keysArray[i]];
-      mostProductive = keysArray[i];
+//   for (let i = 0; i < keysArray.length; i += 1) {
+//     if (maxValue < employees[keysArray[i]]) {
+//       maxValue = employees[keysArray[i]];
+//       mostProductive = keysArray[i];
+//     }
+//   }
+//   return `${mostProductive} : ${maxValue}`;
+// };
+
+/* second option */
+const findBestEmployee = function(employees) {
+  let maxValue = 0;
+  let BestEmployee;
+  for (const key in employees) {
+    if (maxValue < employees[key]) {
+      maxValue = employees[key];
+      BestEmployee = key;
     }
   }
-  return `${mostProductive} : ${maxValue}`;
+  return `${BestEmployee} : ${maxValue}`;
 };
 
 console.log(

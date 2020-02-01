@@ -16,6 +16,29 @@
 // console.log(calculateTotalPrice(products, 'Радар')); // 5200
 // console.log(calculateTotalPrice(products, 'Дроид')); // 2800
 
+/* first option */
+// const products = [
+//   { name: "Радар", price: 1300, quantity: 4 },
+//   { name: "Сканер", price: 2700, quantity: 3 },
+//   { name: "Дроид", price: 400, quantity: 7 },
+//   { name: "Захват", price: 1200, quantity: 2 }
+// ];
+
+// const calculateTotalPrice = function(allProdcuts, productName) {
+//   let ObjectOfProducts = {};
+//   let priceOfProduct = 0;
+
+//   for (let i = 0; i < allProdcuts.length; i += 1) {
+//     ObjectOfProducts = allProdcuts[i];
+//     if (productName === ObjectOfProducts.name) {
+//       priceOfProduct = ObjectOfProducts.price * ObjectOfProducts.quantity;
+//       break;
+//     }
+//   }
+//   return `${priceOfProduct}`;
+// };
+
+/* second option */
 const products = [
   { name: "Радар", price: 1300, quantity: 4 },
   { name: "Сканер", price: 2700, quantity: 3 },
@@ -24,14 +47,13 @@ const products = [
 ];
 
 const calculateTotalPrice = function(allProdcuts, productName) {
-  let ObjectOfProducts = {};
   let priceOfProduct = 0;
-
-  for (let i = 0; i < allProdcuts.length; i += 1) {
-    ObjectOfProducts = allProdcuts[i];
-    if (productName === ObjectOfProducts.name) {
-      priceOfProduct = ObjectOfProducts.price * ObjectOfProducts.quantity;
-      break;
+  for (const elementOfArr of allProdcuts) {
+    for (const keys in elementOfArr) {
+      if (productName === elementOfArr[keys]) {
+        priceOfProduct = elementOfArr.price * elementOfArr.quantity;
+        break;
+      }
     }
   }
   return `${priceOfProduct}`;
