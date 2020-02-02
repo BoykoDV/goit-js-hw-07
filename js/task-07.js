@@ -42,12 +42,9 @@ const account = {
   //  Вызывает createTransaction для создания объекта транзакции
   //  после чего добавляет его в историю транзакций
   deposit(amount) {
-    const deposOperation = account.createTransaction(
-      amount,
-      transaction.DEPOSIT
-    );
-    account.transactions.push(deposOperation);
-    account.balance += amount;
+    const deposOperation = this.createTransaction(amount, transaction.DEPOSIT);
+    this.transactions.push(deposOperation);
+    this.balance += amount;
   },
 
   // 5  отвечающий за снятие суммы с баланса.
@@ -58,13 +55,10 @@ const account = {
   // о том, что снятие такой суммы не возможно, недостаточно средств.
   withdraw(amount) {
     let withdrawOperation = {};
-    if (account.balance > amount) {
-      withdrawOperation = account.createTransaction(
-        amount,
-        transaction.WITHDRAW
-      );
-      account.transactions.push(withdrawOperation);
-      account.balance -= amount;
+    if (this.balance > amount) {
+      withdrawOperation = this.createTransaction(amount, transaction.WITHDRAW);
+      this.transactions.push(withdrawOperation);
+      this.balance -= amount;
     } else {
       alert(`снятие суммы ${amount} не возможно, недостаточно средств`);
     }
