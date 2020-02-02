@@ -1,8 +1,8 @@
 //  'use strict';
 
 const transaction = {
-  DEPOSIT = 'deposit',  /* вклад */
-  WITHDRAW = 'withdraw', /* снятие */
+  DEPOSIT :'deposit',  /* вклад */
+  WITHDRAW : 'withdraw', /* снятие */
 },
 
 const account = {
@@ -18,7 +18,7 @@ const account = {
       const Id= function () {
       return '_' + Math.random().toString(36).substr(2, 9);
       };
-      return {amount, type, id};
+      return {amount, type, id : Id};
   },
 
   //  4 Метод отвечающий за добавление суммы к балансу.
@@ -26,8 +26,9 @@ const account = {
   //  Вызывает createTransaction для создания объекта транзакции
   //  после чего добавляет его в историю транзакций
   deposit(amount) {
-  createTransaction(amount, DEPOSIT);
-  return transactions.push(createTransaction(amount, DEPOSIT));
+  createTransaction(amount, transaction.DEPOSIT);
+  transactions.push(createTransaction(amount, transaction.DEPOSIT));
+  balance += transaction.amount;
   },
 
   // 5  отвечающий за снятие суммы с баланса.
@@ -37,27 +38,25 @@ const account = {
   // Если amount больше чем текущий баланс, выводи сообщение
   // о том, что снятие такой суммы не возможно, недостаточно средств.
  withdraw(amount) {
-  createTransaction(amount, WITHDRAW);
-  return transactions.push(createTransaction(amount, WITHDRAW));
+  createTransaction(amount, transaction.WITHDRAW);
+  if (balance > transaction.WITHDRAW) {
+  transactions.push(createTransaction(amount, transaction.WITHDRAW));
+  balance -= transaction.amount;
+  }
+  else {
+    alert(`снятие ${transaction.WITHDRAW} не возможно, недостаточно средств`);
+  }
  },
 
   // 6 Метод возвращает текущий баланс
  getBalance(transactions) {
-  for (const transaction of transactions) {
-    if (transaction.type === DEPOSIT) {
-      balance += transaction.amount;
-    }
-    if (transaction.type === WITHDRAW) {
-      balance -= transaction.amount;
-    }
-  }
   return balance;
- },
+},
 
   // 7  ищет и возвращает объект транзации по id
  getTransactionDetails(id) {
   for (const transaction of transactions) {
-      if (transaction.id === id) {
+      if (transaction.id === Id) {
         return transaction;
       }
     }
