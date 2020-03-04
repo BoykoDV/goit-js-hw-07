@@ -1,71 +1,81 @@
 // 'use strict';
 
-// Напиши функцию getAllPropValues(arr, prop), которая получает массив объектов и имя свойства.
-// Возвращает массив значений определенного свойства prop из каждого объекта в массиве.
-// const products = [
-//   { name: 'Радар', price: 1300, quantity: 4 },
-//   { name: 'Сканер', price: 2700, quantity: 3 },
-//   { name: 'Дроид', price: 400, quantity: 7 },
-//   { name: 'Захват', price: 1200, quantity: 2 },
-// ];
-
-// const getAllPropValues = function(arr, prop) {
-//   // твой код
-// };
-// Вызовы функции для проверки работоспособности твоей реализации.
-// console.log(getAllPropValues(products, 'name')); // ['Радар', 'Сканер', 'Дроид', 'Захват']
-// console.log(getAllPropValues(products, 'quantity')); // [4, 3, 7, 2]
-// console.log(getAllPropValues(products, 'category')); // []
-
-/* first option */
-// const products = [
-//   { name: "Радар", price: 1300, quantity: 4 },
-//   { name: "Сканер", price: 2700, quantity: 3 },
-//   { name: "Дроид", price: 400, quantity: 7 },
-//   { name: "Захват", price: 1200, quantity: 2 }
-// ];
-
-// const getAllPropValues = function(arr, prop) {
-//   let ObjectOfProducts = {};
-//   const arrayOfPropertyValues = [];
-
-//   for (let i = 0; i < arr.length; i += 1) {
-//     ObjectOfProducts = arr[i];
-//     const keysObject = Object.keys(ObjectOfProducts);
-
-//     for (let i = 0; i < keysObject.length; i += 1) {
-//       if (prop === keysObject[i]) {
-//         // console.log(keysObject[i]);
-//         // console.log(ObjectOfProducts[keysObject[i]]);
-//         arrayOfPropertyValues.push(ObjectOfProducts[keysObject[i]]);
-//         break;
-//       }
-//     }
-//   }
-//   return `${arrayOfPropertyValues}`;
-// };
-
-/* second option */
-const products = [
-  { name: "Радар", price: 1300, quantity: 4 },
-  { name: "Сканер", price: 2700, quantity: 3 },
-  { name: "Дроид", price: 400, quantity: 7 },
-  { name: "Захват", price: 1200, quantity: 2 }
-];
-
-const getAllPropValues = function(arr, prop) {
-  let arrayOfPropValues = [];
-  for (const elementOfArr of arr) {
-    for (const keys in elementOfArr) {
-      if (prop === keys) {
-        arrayOfPropValues.push(elementOfArr[keys]);
-        break;
-      }
+class Car {
+  static maxSpeed = 200;
+  static speed = 50;
+  static isOn = true;
+  static distance = 100;
+  static price = 2000;
+  static getSpecs(car) {
+    if (car) {
+      console.log(car);
+    } else {
+      console.log(
+        `maxSpeed: ${this.maxSpeed}, speed: ${this.speed}, isOn: ${this.isOn}, distance: ${this.distance}, price: ${this.price}`
+      );
     }
   }
-  return `${arrayOfPropValues}`;
-};
 
-console.log(getAllPropValues(products, "name")); // ['Радар', 'Сканер', 'Дроид', 'Захват']
-console.log(getAllPropValues(products, "quantity")); // [4, 3, 7, 2]
-console.log(getAllPropValues(products, "category")); // []
+  constructor(specs) {
+    this.maxSpeed = specs.maxSpeed;
+    this._price = specs.price;
+
+    this.speed = 0;
+    this.isOn = false;
+    this.distance = 0;
+  }
+
+  get price() {
+    return this._price;
+  }
+  set price(newPrice) {
+    this._price = newPrice;
+  }
+
+  turnOn() {
+    this.isOn = true;
+  }
+
+  turnOff() {
+    this.isOn = false;
+    this.speed = 0;
+  }
+
+  accelerate(value) {
+    if (this.maxSpeed >= this.speed + value) {
+      this.speed += value;
+    }
+  }
+
+  decelerate(value) {
+    if (this.speed - value >= 0) {
+      this.speed = this.speed - value;
+    }
+  }
+
+  drive(hours) {
+    if (this.isOn) {
+      this.distance = hours * this.speed;
+    }
+  }
+}
+
+const mustang = new Car({ maxSpeed: 200, price: 2000 });
+
+mustang.turnOn();
+mustang.accelerate(50);
+mustang.drive(2);
+
+Car.getSpecs();
+// maxSpeed: 200, speed: 50, isOn: true, distance: 100, price: 2000
+
+mustang.decelerate(20);
+mustang.drive(1);
+mustang.turnOff();
+
+Car.getSpecs(mustang);
+// maxSpeed: 200, speed: 0, isOn: false, distance: 30, price: 2000
+
+console.log(mustang.price); // 2000
+mustang.price = 4000;
+console.log(mustang.price); // 4000

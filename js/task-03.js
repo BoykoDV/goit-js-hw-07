@@ -1,91 +1,45 @@
 //  'use strict';
 
-// Напиши функцию findBestEmployee(employees), которая принимает объект
-//  и возвращает имя самого продуктивного (который выполнил больше всех задач).
-//  Сотрудники и кол-во выполненых задач содержатся как свойства объекта в формате "имя":"кол-во задач".
-// const findBestEmployee = function(employees) {
-//   // твой код
-// };
-//  Вызовы функции для проверки работоспособности твоей реализации.
-//  console.log(
-//   findBestEmployee({
-//     ann: 29,
-//     david: 35,
-//     helen: 1,
-//     lorence: 99,
-//   }),
-// ); // lorence
+// Напиши класс Storage, который будет создавать объекты для управления складом товаров. При вызове будет получать один аргумент
+//  - начальный массив товаров, и записывать его в свойство items.
 
-// console.log(
-//   findBestEmployee({
-//     poly: 12,
-//     mango: 17,
-//     ajax: 4,
-//   }),
-// ); // mango
+class Storage {
+  constructor(items) {
+    this.items = items;
+  }
 
-// console.log(
-//   findBestEmployee({
-//     lux: 147,
-//     david: 21,
-//     kiwi: 19,
-//     chelsy: 38,
-//   }),
-// ); // lux
+  getItems() {
+    return this.items;
+  }
 
-/* first option */
-// const findBestEmployee = function(employees) {
-//   // const valuesArray = Object.values(employees);
-//   // const max = Math.max(...valuesArray);
-//   // console.log(max);
-//   const keysArray = Object.keys(employees);
-//   let maxValue = employees[keysArray[0]];
-//   let mostProductive = keysArray[0];
+  addItem(item) {
+    this.items.push(item);
+  }
 
-//   for (let i = 0; i < keysArray.length; i += 1) {
-//     if (maxValue < employees[keysArray[i]]) {
-//       maxValue = employees[keysArray[i]];
-//       mostProductive = keysArray[i];
-//     }
-//   }
-//   return `${mostProductive} : ${maxValue}`;
-// };
-
-/* second option */
-const findBestEmployee = function(employees) {
-  let maxValue = 0;
-  let BestEmployee;
-  for (const key in employees) {
-    if (maxValue < employees[key]) {
-      maxValue = employees[key];
-      BestEmployee = key;
+  removeItem(item) {
+    if (this.items.includes(item)) {
+      for (let i = 0; i < this.items.length - 1; i += 1) {
+        if (this.items[i] === item) {
+          this.items.splice(i, 1);
+          break;
+        }
+      }
     }
   }
-  return `${BestEmployee} : ${maxValue}`;
-};
+}
 
-console.log(
-  findBestEmployee({
-    ann: 29,
-    david: 35,
-    helen: 1,
-    lorence: 99
-  })
-); // lorence
+const storage = new Storage([
+  "Нанитоиды",
+  "Пролонгер",
+  "Железные жупи",
+  "Антигравитатор"
+]);
 
-console.log(
-  findBestEmployee({
-    poly: 12,
-    mango: 17,
-    ajax: 4
-  })
-); // mango
+const items = storage.getItems();
+console.table(items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор" ]
 
-console.log(
-  findBestEmployee({
-    lux: 147,
-    david: 21,
-    kiwi: 19,
-    chelsy: 38
-  })
-); // lux
+storage.addItem("Дроид");
+console.table(storage.items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор", "Дроид" ]
+
+storage.removeItem("Пролонгер");
+console.table(storage.items); // [ "Нанитоиды", "Железные жупи", "Антигравитатор", "Дроид" ]
