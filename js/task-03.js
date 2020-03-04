@@ -17,13 +17,8 @@ class Storage {
   }
 
   removeItem(item) {
-    if (this.items.includes(item)) {
-      for (let i = 0; i < this.items.length - 1; i += 1) {
-        if (this.items[i] === item) {
-          this.items.splice(i, 1);
-          break;
-        }
-      }
+    if (items.indexOf(item) !== -1) {
+      this.items.splice(items.indexOf(item), 1);
     }
   }
 }
