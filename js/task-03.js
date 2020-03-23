@@ -1,40 +1,14 @@
 //  'use strict';
 
-// Напиши класс Storage, который будет создавать объекты для управления складом товаров. При вызове будет получать один аргумент
-//  - начальный массив товаров, и записывать его в свойство items.
+import users from "./users.js";
+// console.table(users);
 
-class Storage {
-  constructor(items) {
-    this.items = items;
-  }
+// Получить массив имен пользователей по полу (поле gender).
 
-  getItems() {
-    return this.items;
-  }
+const getUsersWithGender = function(users, gender) {
+  return users.filter(function(user) {
+    return user.gender === gender;
+  });
+};
 
-  addItem(item) {
-    this.items.push(item);
-  }
-
-  removeItem(item) {
-    if (items.indexOf(item) !== -1) {
-      this.items.splice(items.indexOf(item), 1);
-    }
-  }
-}
-
-const storage = new Storage([
-  "Нанитоиды",
-  "Пролонгер",
-  "Железные жупи",
-  "Антигравитатор"
-]);
-
-const items = storage.getItems();
-console.table(items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор" ]
-
-storage.addItem("Дроид");
-console.table(storage.items); // [ "Нанитоиды", "Пролонгер", "Железные жупи", "Антигравитатор", "Дроид" ]
-
-storage.removeItem("Пролонгер");
-console.table(storage.items); // [ "Нанитоиды", "Железные жупи", "Антигравитатор", "Дроид" ]
+console.table(getUsersWithGender(users, "male")); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]

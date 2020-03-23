@@ -1,26 +1,12 @@
 //  'use strict';
 
-// Напиши функцию-конструктор Account, которая создает объект со свойствами login и email. В prototype функции-конструктора добавь метод getInfo(),
-// который выводит в консоль значения полей login и email объекта который его вызвал.
+import users from "./users.js";
+console.table(users);
 
-const Account = function(user) {
-  this.login = user.login;
-  this.email = user.email;
-};
-Account.prototype.getInfo = function() {
-  console.log(`Login: ${this.login}, Email: ${this.email}`);
-};
+// Получить массив имен всех пользователей (поле name).
 
-console.log(Account.prototype.getInfo); // function
-
-const mango = new Account({
-  login: "Mangozedog",
-  email: "mango@dog.woof"
+const getUserNames = users.map(function(user) {
+  return user.name;
 });
-mango.getInfo(); // Login: Mangozedog, Email: mango@dog.woof
 
-const poly = new Account({
-  login: "Poly",
-  email: "poly@mail.com"
-});
-poly.getInfo(); // Login: Poly, Email: poly@mail.com
+console.log(getUserNames); // [ 'Moore Hensley', 'Sharlene Bush', 'Ross Vazquez', 'Elma Head', 'Carey Barr', 'Blackburn Dotson', 'Sheree Anthony' ]
