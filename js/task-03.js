@@ -19,13 +19,21 @@ const getUsersWithGender = function(users, gender) {
 
   // return nameUsersGender;
 
+  // return users
+  //   .filter(function(user) {
+  //     return user.gender === gender;
+  //   })
+  //   .reduce(function(names = [], user) {
+  //     names.push(user.name);
+  //     return names;
+  //   }, []);
+
   return users
     .filter(function(user) {
       return user.gender === gender;
     })
-    .reduce(function(names = [], user) {
-      names.push(user.name);
-      return names;
+    .map(function(user) {
+      return user.name;
     }, []);
 };
 
