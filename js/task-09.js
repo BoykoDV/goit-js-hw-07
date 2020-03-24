@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 // console.table(users);
+console.log(`-------TASK-09-------`);
 
 // Массив имен (поле name) людей, отсортированных в зависимости от количества их друзей (поле friends)
 

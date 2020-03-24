@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 // console.table(users);
+console.log(`-------TASK-05-------`);
 
 // Получить пользоваля (не массив) по email (поле email, он уникальный).
 

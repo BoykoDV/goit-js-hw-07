@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 // console.table(users);
+console.log(`-------TASK-08-------`);
 
 // Массив имен всех пользователей у которых есть друг с указанным именем.
 

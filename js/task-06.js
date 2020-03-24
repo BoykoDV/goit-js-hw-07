@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 // console.table(users);
+console.log(`-------TASK-06-------`);
 
 // Получить массив пользователей попадающих в возрастную категорию от min до max лет (поле age).
 

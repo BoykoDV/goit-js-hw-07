@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 // console.table(users);
+console.log(`-------TASK-04-------`);
 
 // Получить массив только неактивных пользователей (поле isActive).
 

@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 console.table(users);
+console.log(`-------TASK-01-------`);
 
 // Получить массив имен всех пользователей (поле name).
 

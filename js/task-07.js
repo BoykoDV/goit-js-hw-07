@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 // console.table(users);
+console.log(`-------TASK-07-------`);
 
 // Получить общую сумму баланса (поле balance) всех пользователей.
 

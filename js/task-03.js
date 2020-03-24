@@ -2,6 +2,7 @@
 
 import users from "./users.js";
 // console.table(users);
+console.log(`-------TASK-03-------`);
 
 // Получить массив имен пользователей по полу (поле gender).
 
