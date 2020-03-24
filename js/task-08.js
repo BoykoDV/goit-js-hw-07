@@ -7,11 +7,19 @@ console.log(`-------TASK-08-------`);
 // Массив имен всех пользователей у которых есть друг с указанным именем.
 
 const getUsersWithFriend = function(users, friendName) {
+  // return users
+  //   .filter(function(user) {
+  //     if (user.friends.includes(friendName)) {
+  //       return user.name;
+  //     }
+  //   }, [])
+  //   .map(function(user) {
+  //     return user.name;
+  //   });
+
   return users
     .filter(function(user) {
-      if (user.friends.includes(friendName)) {
-        return user.name;
-      }
+      return user.friends.includes(friendName);
     }, [])
     .map(function(user) {
       return user.name;

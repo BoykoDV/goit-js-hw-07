@@ -8,26 +8,34 @@ console.log(`-------TASK-10-------`);
 //  умений и они должны быть отсортированы в алфавитном порядке.
 
 const getSortedUniqueSkills = function(users) {
-  const allSkills = users.reduce(function(skills, user) {
-    skills.push(...user.skills);
-    return skills;
-  }, []);
-  // console.log(`allSkills:`, allSkills);
+  // const allSkills = users.reduce(function(skills, user) {
+  //   skills.push(...user.skills);
+  //   return skills;
+  // }, []);
+  // // console.log(`allSkills:`, allSkills);
 
-  const uniqueSkills = allSkills.reduce(function(unqSkills = [], skill) {
-    if (!unqSkills.includes(skill)) {
-      unqSkills.push(skill);
-    }
-    return unqSkills;
-  }, []);
-  // console.log(`uniqueSkills:`, uniqueSkills);
+  // const uniqueSkills = allSkills.reduce(function(unqSkills = [], skill) {
+  //   if (!unqSkills.includes(skill)) {
+  //     unqSkills.push(skill);
+  //   }
+  //   return unqSkills;
+  // }, []);
+  // // console.log(`uniqueSkills:`, uniqueSkills);
 
-  return uniqueSkills;
+  // return uniqueSkills;
+
+  return users
+    .reduce(function(skills, user) {
+      skills.push(...user.skills);
+      return skills;
+    }, [])
+    .reduce(function(unqSkills = [], skill) {
+      if (!unqSkills.includes(skill)) {
+        unqSkills.push(skill);
+      }
+      return unqSkills;
+    }, [])
+    .sort();
 };
 
 console.log(getSortedUniqueSkills(users));
-// [ 'adipisicing', 'amet', 'anim', 'commodo', 'culpa', 'elit', 'ex', 'ipsum', 'irure', 'laborum', 'lorem', 'mollit', 'non', 'nostrud', 'nulla', 'proident', 'tempor', 'velit', 'veniam' ]
-
-//     unqSkill.includes(skill) ? unqSkills : unqSkill.push(skill);
-
-// console.log(![].includes(5));
