@@ -1,30 +1,68 @@
 //  'use strict';
 
-import users from "./users.js";
-// console.table(users);
 console.log(`-------TASK-08-------`);
 
-// Массив имен всех пользователей у которых есть друг с указанным именем.
+// Напиши скрипт создания и очистки коллекции элементов.
+// Пользователь вводит количество элементов в input и нажимает кнопку Создать, после чего рендерится коллекция.
+// При нажатии на кнопку Очистить, коллекция элементов очищается.
+// Создай функцию createBoxes(amount), которая принимает 1 параметр amount - число.
+// Функция создает столько div, сколько указано в amount и добавляет их в div#boxes.
 
-const getUsersWithFriend = function(users, friendName) {
-  // return users
-  //   .filter(function(user) {
-  //     if (user.friends.includes(friendName)) {
-  //       return user.name;
-  //     }
-  //   }, [])
-  //   .map(function(user) {
-  //     return user.name;
-  //   });
+// Каждый созданный div:
+// Имеет случайный rgb цвет фона
+// Размеры самого первого div - 30px на 30px
+// Каждый следующий div после первого, должен быть шире и выше предыдущего на 10px
+// Создай функцию destroyBoxes(), которая очищает div#boxes.
 
-  return users
-    .filter(function(user) {
-      return user.friends.includes(friendName);
-    }, [])
-    .map(function(user) {
-      return user.name;
-    });
-};
+const btnRendRef = document.querySelector(
+  '#controls button[data-action="render"]'
+);
+const btnDestRef = document.querySelector(
+  '#controls button[data-action="destroy"]'
+);
+const inpValueRef = document.querySelector("#controls input");
+const box = document.querySelector("#boxes");
 
-console.log(getUsersWithFriend(users, "Briana Decker")); // [ 'Sharlene Bush', 'Sheree Anthony' ]
-console.log(getUsersWithFriend(users, "Goldie Gentry")); // [ 'Elma Head', 'Sheree Anthony' ]
+let delAmount;
+
+// создаем елементы
+btnRendRef.addEventListener("click", function(event) {
+  // console.log(inpValueRef.value);
+  const amount = inpValueRef.value;
+  createBoxes(amount);
+  delAmount = amount;
+});
+function createBoxes(amount) {
+  const arrayOfTegs = [];
+  let w = 30;
+  let h = 30;
+  for (let i = 1; i <= amount; i += 1) {
+    const itemTeg = document.createElement("div");
+    itemTeg.setAttribute("class", "createTeg");
+    // случайный цвет фона
+    const r = Math.floor(Math.random() * 256);
+    const g = Math.floor(Math.random() * 256);
+    const b = Math.floor(Math.random() * 256);
+    itemTeg.setAttribute(
+      "style",
+      `background-color: rgb(${r}, ${g}, ${b}); width: ${w}px; height: ${h}px`
+    );
+    // sizes box
+    w += 10;
+    h += 10;
+    arrayOfTegs.push(itemTeg);
+  }
+  box.append(...arrayOfTegs);
+}
+
+// удаляем елементы
+btnDestRef.addEventListener("click", function(event) {
+  destroyBoxes(delAmount);
+});
+function destroyBoxes(delAmount) {
+  // console.log(delAmount);
+  for (let i = 1; i <= delAmount; i += 1) {
+    const tgDv = document.querySelector(".createTeg");
+    tgDv.remove();
+  }
+}

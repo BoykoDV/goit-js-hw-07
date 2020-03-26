@@ -1,40 +1,51 @@
 //  'use strict';
 
-import users from "./users.js";
-// console.table(users);
 console.log(`-------TASK-03-------`);
 
-// Получить массив имен пользователей по полу (поле gender).
+// Используй массив объектов images для создания тегов img вложенных в li.
+// Для создания разметки используй шаблонные строки и insertAdjacentHTML().
+// Все элементы галереи должны добавляться в DOM за одну операцию вставки.
+// Добавь минимальное оформление галереи флексбоксами или гридами через css-классы.
 
-const getUsersWithGender = function(users, gender) {
-  // const usersGender = users.filter(function(user) {
-  //   return user.gender === gender;
-  // });
+const images = [
+  {
+    url:
+      "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    alt: "White and Black Long Fur Cat"
+  },
+  {
+    url:
+      "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    alt: "Orange and White Koi Fish Near Yellow Koi Fish"
+  },
+  {
+    url:
+      "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+    alt: "Group of Horses Running"
+  }
+];
 
-  // const nameUsersGender = usersGender.reduce(function(names = [], user) {
-  //   names.push(user.name);
-  //   // console.log(user.name);
-  //   return names;
-  // }, []);
+// insertAdjacentHTML()
 
-  // return nameUsersGender;
+const ingredientsListRef = document.querySelector("#gallery");
 
-  // return users
-  //   .filter(function(user) {
-  //     return user.gender === gender;
-  //   })
-  //   .reduce(function(names = [], user) {
-  //     names.push(user.name);
-  //     return names;
-  //   }, []);
-
-  return users
-    .filter(function(user) {
-      return user.gender === gender;
-    })
-    .map(function(user) {
-      return user.name;
-    }, []);
+const createItem = function() {
+  const itemListRef = document.createElement("li");
+  const imgRef = document.createElement("img");
+  ingredientsListRef.appendChild(itemListRef);
+  itemListRef.appendChild(imgRef);
+  return itemListRef;
 };
 
-console.log(getUsersWithGender(users, "male")); // [ 'Moore Hensley', 'Ross Vazquez', 'Carey Barr', 'Blackburn Dotson' ]
+const list = images.reduce(function(acc, image, i) {
+  const atributs = Object.values(image);
+  const item = createItem();
+  item.firstElementChild.setAttribute(`src`, `${atributs[0]}`);
+  item.firstElementChild.setAttribute(`alt`, `${atributs[1]}`);
+  // console.log(item);
+  acc[i] = item;
+  return acc;
+}, []);
+
+// console.log(list);
+ingredientsListRef.append(...list);

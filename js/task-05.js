@@ -1,16 +1,20 @@
 //  'use strict';
 
-import users from "./users.js";
-// console.table(users);
 console.log(`-------TASK-05-------`);
 
-// Получить пользоваля (не массив) по email (поле email, он уникальный).
+// Напиши скрипт который, при наборе текста в инпуте input#name-input (событие input),
+// подставляет его текущее значение в span#name-output. Если инпут пустой, в спане должна отображаться строка 'незнакомец'.
 
-const getUserWithEmail = function(users, email) {
-  return users.find(function(user) {
-    return user.email === email;
-  });
-};
+const inputRef = document.querySelector("#name-input");
+const spanRef = document.querySelector("#name-output");
+const value = document.querySelector("#value");
 
-console.log(getUserWithEmail(users, "shereeanthony@kog.com")); // {объект пользователя Sheree Anthony}
-console.log(getUserWithEmail(users, "elmahead@omatom.com")); // {объект пользователя Elma Head}
+let spanValue = "незнакомец";
+spanRef.textContent = spanValue;
+
+inputRef.addEventListener("input", handleInputChange);
+
+function handleInputChange(event) {
+  spanValue = event.target.value;
+  spanRef.textContent = spanValue;
+}

@@ -1,15 +1,27 @@
 //  'use strict';
 
-import users from "./users.js";
-// console.table(users);
 console.log(`-------TASK-02-------`);
 
-// Получить массив объектов пользователей по цвету глаз (поле eyeColor).
+// Напиши скрипт, который для каждого элемента массива ingredients создаст отдельный li,
+// после чего вставит все li за одну операцию в список ul.ingredients.
+// Для создания DOM-узлов используй document.createElement().
 
-const getUsersWithEyeColor = function(users, color) {
-  return users.filter(function(user) {
-    return user.eyeColor === color;
-  });
-};
+const ingredients = [
+  "Картошка",
+  "Грибы",
+  "Чеснок",
+  "Помидоры",
+  "Зелень",
+  "Приправы"
+];
 
-console.table(getUsersWithEyeColor(users, "blue")); // [объект Moore Hensley, объект Sharlene Bush, объект Carey Barr]
+const ingredientsListRef = document.querySelector("#ingredients");
+
+const list = ingredients.reduce(function(acc, ingredient) {
+  const itemListRef = document.createElement("li");
+  itemListRef.textContent = `${ingredient}`;
+  acc.push(itemListRef);
+  return acc;
+}, []);
+
+ingredientsListRef.append(...list);

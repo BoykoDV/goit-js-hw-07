@@ -1,0 +1,142 @@
+@import "./normalize.css";
+
+html {
+  box-sizing: border-box;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit; /* наследование */
+}
+
+.wrapper {
+  width: 940px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+h2,
+h1 {
+  display: block;
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  color: rgb(26, 188, 156);
+  text-transform: uppercase;
+}
+
+.item > ul > li {
+  display: block;
+  font-size: 14px;
+  color: rgb(6, 22, 94);
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+ul {
+  list-style: none; /* маркеры списка */
+  margin: 0 auto;
+  margin-bottom: 40px;
+}
+
+#gallery {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+#gallery li {
+  display: block;
+  width: 250px;
+  height: 200px;
+}
+
+#gallery img {
+  width: 300px;
+  height: 200px;
+}
+
+/* button */
+#counter {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+button {
+  display: block;
+  width: 160px;
+  height: 52px;
+  background-color: rgb(26, 188, 156);
+  font-size: 16px;
+  font-family: "Roboto";
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 6px;
+  text-transform: capitalize;
+  line-height: 52px;
+}
+button:hover,
+button:focus {
+  color: rgb(26, 188, 156);
+  font-weight: bold;
+  /* text-transform: uppercase; */
+  background-color: rgb(255, 255, 255);
+  border: 4px solid rgb(26, 188, 156);
+  outline: none;
+}
+
+#value {
+  display: block;
+  width: 160px;
+  height: 52px;
+  border-radius: 6px;
+  background-color: rgb(26, 188, 156);
+  text-align: center;
+  font-size: 30px;
+  font-family: "Roboto", sans-serif;
+  color: rgb(230, 21, 66);
+  text-transform: uppercase;
+}
+
+/* TASK-06 */
+.valInp {
+  border: 3px solid #bdbdbd;
+  margin-bottom: 40px;
+}
+
+.inpValid {
+  border-color: #4caf50;
+}
+
+.inpInvalid {
+  border-color: #f44336;
+}
+
+/* TASK-07 */
+
+#font-size-control {
+  display: block;
+  margin-bottom: 40px;
+}
+
+#text {
+  display: block;
+  font-size: 24px;
+  font-family: "Roboto", sans-serif;
+  color: rgb(26, 188, 156);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+/* TASK-08 */
+#boxes {
+  display: flex;
+  justify-content: space-between;
+  min-height: 30px;
+  /* width: 100%; */
+}
+
+.createTeg {
+  display: block;
+}

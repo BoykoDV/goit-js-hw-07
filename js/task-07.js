@@ -1,15 +1,24 @@
 //  'use strict';
 
-import users from "./users.js";
-// console.table(users);
 console.log(`-------TASK-07-------`);
 
-// Получить общую сумму баланса (поле balance) всех пользователей.
+// Напиши скрипт, который реагирует на изменение значения input#font-size-control (событие input) и
+//  изменяет инлайн-стиль span#text обновляя свойство font-size. В результате при перетаскивании ползунка будет меняться размер текста.
 
-const calculateTotalBalance = function(users) {
-  return users.reduce(function(accumulator, user) {
-    return accumulator + user.balance;
-  }, 0);
-};
+{
+  /* <input id="font-size-control" type="range" />
+<br />
+<span id="text">Абракадабра!</span> */
+}
 
-console.log(calculateTotalBalance(users)); // 20916
+const rangeRef = document.querySelector("#font-size-control");
+const spn = document.querySelector("#text");
+
+rangeRef.setAttribute("min", "10");
+rangeRef.setAttribute("max", "100");
+rangeRef.setAttribute("step", "1");
+
+rangeRef.addEventListener("input", function(event) {
+  //   console.log(rangeRef.value);
+  spn.setAttribute("style", `font-size: ${rangeRef.value}px`);
+});

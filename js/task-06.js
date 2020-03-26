@@ -1,16 +1,29 @@
 //  'use strict';
 
-import users from "./users.js";
-// console.table(users);
 console.log(`-------TASK-06-------`);
 
-// Получить массив пользователей попадающих в возрастную категорию от min до max лет (поле age).
+// Напиши скрипт, который бы при потере фокуса на инпуте, проверял его содержимое на правильное количество символов.
+// Сколько символов должно быть в инпуте, указывается в его атрибуте data-length.
+// Если введено подходящее количество, то border инпута становится зеленым, если неправильное - красным.
+// Для добавления стилей, используй CSS-классы valid и invalid.
 
-const getUsersWithAge = function(users, min, max) {
-  return users.filter(function(user) {
-    return user.age > min && user.age < max;
-  });
-};
+const inputRef = document.querySelector("#validation-input");
 
-console.table(getUsersWithAge(users, 20, 30)); // [объект Ross Vazquez, объект Elma Head, объект Carey Barr]
-console.table(getUsersWithAge(users, 30, 40)); // [объект Moore Hensley, объект Sharlene Bush, объект Blackburn Dotson, объект Sheree Anthony]
+inputRef.addEventListener("blur", chekInputLenght);
+
+const needLenght = inputRef.getAttribute("data-length");
+// console.log(needLenght);
+inputRef.className = "valInp";
+
+function chekInputLenght(event) {
+  const ipt = [event.target.value];
+  // console.log(typeof ipt[0].length);
+  // console.log(typeof needLenght);
+  if (ipt[0].length === Number(needLenght)) {
+    // console.log("ok!");
+    inputRef.className += " inpValid";
+  } else {
+    // console.log(":( Try again!");
+    inputRef.className += " inpInvalid";
+  }
+}

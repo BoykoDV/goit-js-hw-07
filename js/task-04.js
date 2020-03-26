@@ -1,15 +1,30 @@
 //  'use strict';
 
-import users from "./users.js";
-// console.table(users);
 console.log(`-------TASK-04-------`);
 
-// Получить массив только неактивных пользователей (поле isActive).
+// Счетчик состоит из спана и кнопок, которые должны увеличивать и уменьшать значение счетчика на 1.
+// Создай переменную counterValue в которой будет хранится текущее значение счетчика.
+// Создай функции increment и decrement для увеличения и уменьшения значения счетчика
+// Добавь слушатели кликов на кнопки, вызовы функций и обновление интерфейса
 
-const getInactiveUsers = function(users) {
-  return users.filter(function(user) {
-    return !user.isActive;
-  });
-};
+const btnMinusRef = document.querySelector(
+  '#counter button[data-action="decrement"]'
+);
+const btnPlusRef = document.querySelector(
+  '#counter button[data-action="increment"]'
+);
+const value = document.querySelector("#value");
 
-console.table(getInactiveUsers(users)); // [объект Moore Hensley, объект Ross Vazquez, объект Blackburn Dotson]
+let counterValue = 0;
+// console.log(counterValue);
+value.textContent = counterValue;
+
+btnPlusRef.addEventListener("click", event => {
+  counterValue = counterValue + 1;
+  value.textContent = counterValue;
+});
+
+btnMinusRef.addEventListener("click", event => {
+  counterValue = counterValue - 1;
+  value.textContent = counterValue;
+});
