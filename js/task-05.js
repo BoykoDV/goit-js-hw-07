@@ -15,6 +15,12 @@ spanRef.textContent = spanValue;
 inputRef.addEventListener("input", handleInputChange);
 
 function handleInputChange(event) {
-  spanValue = event.target.value;
-  spanRef.textContent = spanValue;
+  // console.dir(event.target.value === "");
+  if (event.target.value === "") {
+    spanValue = "незнакомец";
+    spanRef.textContent = spanValue;
+  } else {
+    spanValue = event.target.value;
+    spanRef.textContent = spanValue;
+  }
 }

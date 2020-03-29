@@ -21,9 +21,11 @@ function chekInputLenght(event) {
   // console.log(typeof needLenght);
   if (ipt[0].length === Number(needLenght)) {
     // console.log("ok!");
-    inputRef.className += " inpValid";
+    inputRef.classList.add("inpValid");
+    inputRef.classList.remove("inpInvalid");
   } else {
     // console.log(":( Try again!");
-    inputRef.className += " inpInvalid";
+    inputRef.classList.add("inpInvalid");
+    inputRef.classList.remove("inpValid");
   }
 }

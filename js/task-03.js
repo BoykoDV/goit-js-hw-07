@@ -37,14 +37,12 @@ const createItem = function() {
   return itemListRef;
 };
 
-const list = images.reduce(function(acc, image, i) {
-  const atributs = Object.values(image);
+const list = images.map(function(image) {
   const item = createItem();
-  item.firstElementChild.setAttribute(`src`, `${atributs[0]}`);
-  item.firstElementChild.setAttribute(`alt`, `${atributs[1]}`);
+  item.firstElementChild.setAttribute(`src`, image.url);
+  item.firstElementChild.setAttribute(`alt`, image.alt);
   // console.log(item);
-  acc[i] = item;
-  return acc;
+  return item;
 }, []);
 
 // console.log(list);

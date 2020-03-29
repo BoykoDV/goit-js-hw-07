@@ -17,11 +17,10 @@ const ingredients = [
 
 const ingredientsListRef = document.querySelector("#ingredients");
 
-const list = ingredients.reduce(function(acc, ingredient) {
+const list = ingredients.map(function(ingredient) {
   const itemListRef = document.createElement("li");
-  itemListRef.textContent = `${ingredient}`;
-  acc.push(itemListRef);
-  return acc;
+  itemListRef.textContent = ingredient;
+  return itemListRef;
 }, []);
 
 ingredientsListRef.append(...list);
