@@ -43,7 +43,7 @@ const list = images.map(function(image) {
   item.firstElementChild.setAttribute(`alt`, image.alt);
   // console.log(item);
   return item;
-}, []);
+});
 
 // console.log(list);
 ingredientsListRef.append(...list);

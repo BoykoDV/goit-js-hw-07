@@ -21,6 +21,6 @@ const list = ingredients.map(function(ingredient) {
   const itemListRef = document.createElement("li");
   itemListRef.textContent = ingredient;
   return itemListRef;
-}, []);
+});
 
 ingredientsListRef.append(...list);

@@ -16,10 +16,10 @@ const needLenght = inputRef.getAttribute("data-length");
 inputRef.className = "valInp";
 
 function chekInputLenght(event) {
-  const ipt = [event.target.value];
+  const ipt = event.target.value;
   // console.log(typeof ipt[0].length);
   // console.log(typeof needLenght);
-  if (ipt[0].length === Number(needLenght)) {
+  if (ipt.length === Number(needLenght)) {
     // console.log("ok!");
     inputRef.classList.add("inpValid");
     inputRef.classList.remove("inpInvalid");

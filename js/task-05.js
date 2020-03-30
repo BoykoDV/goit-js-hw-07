@@ -9,7 +9,7 @@ const inputRef = document.querySelector("#name-input");
 const spanRef = document.querySelector("#name-output");
 const value = document.querySelector("#value");
 
-let spanValue = "незнакомец";
+const spanValue = "незнакомец";
 spanRef.textContent = spanValue;
 
 inputRef.addEventListener("input", handleInputChange);
@@ -17,10 +17,8 @@ inputRef.addEventListener("input", handleInputChange);
 function handleInputChange(event) {
   // console.dir(event.target.value === "");
   if (event.target.value === "") {
-    spanValue = "незнакомец";
     spanRef.textContent = spanValue;
   } else {
-    spanValue = event.target.value;
-    spanRef.textContent = spanValue;
+    spanRef.textContent = event.target.value;
   }
 }
